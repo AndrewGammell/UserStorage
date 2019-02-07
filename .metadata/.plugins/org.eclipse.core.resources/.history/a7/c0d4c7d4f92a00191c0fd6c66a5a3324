@@ -1,0 +1,116 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Database {
+	private Connection connection = null;
+	private String format = "ID: %d  Firstname: %s  Lastname: %s";
+
+	
+	private Connection getConnection() throws Exception {
+		if(connection == null) {
+			Class.forName("org.h2.Driver").newInstance();
+			connection = DriverManager.getConnection("jdbc:h2:.storage/user", "root", "password");
+		}
+		return connection;
+	}
+	
+	public void createTable() {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String table = "CREATE TABLE IF NOT EXISTS USER (id INTEGER, first_name VARCHAR(50), last_name VARCHAR(50))";
+			stmt.executeUpdate(table);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void getAllUsers() {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String getUsers = "SELECT * FROM USER";
+			ResultSet rs = stmt.executeQuery(getUsers);
+			while(rs.next()) {
+				System.out.println(String.format(format, rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void getUserByID(int id) {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String getUser = "SELECT * FROM USER WHERE id = " + String.valueOf(id);
+			ResultSet rs = stmt.executeQuery(getUser);
+			while(rs.next()) {
+				System.out.println(String.format(format, rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void countUsers() {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String getUsers = "SELECT * FROM USER";
+			ResultSet rs = stmt.executeQuery(getUsers);
+			System.out.println("There are " + rs.getFetchSize() + " users currently on the database");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void addUser(int id, String first, String last) {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String user = String.format("INSERT INTO USER VALUES ('%d','%s','%s')",id,first,last );
+			stmt.executeUpdate(user);
+			System.out.println("User added to database");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public void deleteUser(int id) {
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			String user = String.format("DELETE FROM USER WHERE id = " + id );
+			stmt.executeUpdate(user);
+			System.out.println("User added to database");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void editUser() {
+		
+	}
+	
+	
+	
+
+}
+

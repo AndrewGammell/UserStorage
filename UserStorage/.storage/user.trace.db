@@ -1,0 +1,143 @@
+02-07 16:14:56 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO USER ('id'[*],'first_name','last_name') VALUES ('1','andrew','gammell')"; expected "identifier"; SQL statement:
+INSERT INTO USER ('id','first_name','last_name') VALUES ('1','andrew','gammell') [42001-148]
+02-07 16:20:37 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO USER ('id'[*],'first_name','last_name') VALUES ('1','andrew','gammell')"; expected "identifier"; SQL statement:
+INSERT INTO USER ('id','first_name','last_name') VALUES ('1','andrew','gammell') [42001-148]
+02-07 16:21:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO USER ('id'[*],'first_name','last_name') VALUES ('1','andrew','gammell')"; expected "identifier"; SQL statement:
+INSERT INTO USER ('id','first_name','last_name') VALUES ('1','andrew','gammell') [42001-148]
+02-07 16:46:36 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Schema "USER" not found; SQL statement:
+INSERT INTO user.USER ('id','first_name','last_name') VALUES ('1','sfdfs','dsfsf') [90079-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Parser.getSchema(Parser.java:607)
+	at org.h2.command.Parser.getSchema(Parser.java:614)
+	at org.h2.command.Parser.readTableOrView(Parser.java:4546)
+	at org.h2.command.Parser.readTableOrView(Parser.java:4540)
+	at org.h2.command.Parser.parseInsert(Parser.java:922)
+	at org.h2.command.Parser.parsePrepared(Parser.java:371)
+	at org.h2.command.Parser.parse(Parser.java:275)
+	at org.h2.command.Parser.parse(Parser.java:247)
+	at org.h2.command.Parser.prepare(Parser.java:201)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:122)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:111)
+	at database.Database.addUser(Database.java:82)
+	at menu.Menu.addUser(Menu.java:100)
+	at menu.Menu.doOperation(Menu.java:66)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:12)
+02-07 17:00:26 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-148]
+02-07 17:02:10 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-148]
+02-07 17:04:45 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS USER (ID INTEGER NOT_NULL[*], FIRST_NAME VARCHAR(50) NOT_NULL, LAST_NAME VARCHAR(50) NOT_NULL) "; expected ")"; SQL statement:
+CREATE TABLE IF NOT EXISTS USER (id INTEGER NOT_NULL, first_name VARCHAR(50) NOT_NULL, last_name VARCHAR(50) NOT_NULL) [42001-148]
+02-07 18:43:09 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ITEM" not found; SQL statement:
+UPDATE item SET first_name = john, last_name = doe WHERE id = 1 [42102-148]
+02-07 18:43:57 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "JOHN" not found; SQL statement:
+UPDATE USER SET first_name = john, last_name = doe WHERE id = 1 [42122-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.command.dml.Update.prepare(Update.java:170)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:122)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:111)
+	at database.Database.editUser(Database.java:119)
+	at menu.Menu.updateUser(Menu.java:124)
+	at menu.Menu.doOperation(Menu.java:68)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:13)
+02-07 18:47:28 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "JOHN" not found; SQL statement:
+UPDATE USER SET first_name=john, last_name=doe WHERE id=1 [42122-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.command.dml.Update.prepare(Update.java:170)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:122)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:111)
+	at database.Database.editUser(Database.java:119)
+	at menu.Menu.updateUser(Menu.java:124)
+	at menu.Menu.doOperation(Menu.java:68)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:13)
+02-07 18:48:20 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "JOHN" not found; SQL statement:
+UPDATE USER SET first_name=john, last_name=doe WHERE id=1 [42122-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:126)
+	at org.h2.command.dml.Update.prepare(Update.java:170)
+	at org.h2.command.Parser.prepare(Parser.java:202)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at database.Database.editUser(Database.java:119)
+	at menu.Menu.updateUser(Menu.java:124)
+	at menu.Menu.doOperation(Menu.java:68)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:13)
+02-07 18:49:51 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Column "JOHN" not found; SQL statement:
+UPDATE USER SET john=first_name, last_name=doe WHERE id=1 [42122-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.table.Table.getColumn(Table.java:556)
+	at org.h2.command.Parser.readTableColumn(Parser.java:644)
+	at org.h2.command.Parser.parseUpdate(Parser.java:673)
+	at org.h2.command.Parser.parsePrepared(Parser.java:423)
+	at org.h2.command.Parser.parse(Parser.java:275)
+	at org.h2.command.Parser.parse(Parser.java:247)
+	at org.h2.command.Parser.prepare(Parser.java:201)
+	at org.h2.command.Parser.prepareCommand(Parser.java:214)
+	at org.h2.engine.Session.prepareLocal(Session.java:425)
+	at org.h2.engine.Session.prepareCommand(Session.java:374)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1056)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:71)
+	at database.Database.editUser(Database.java:119)
+	at menu.Menu.updateUser(Menu.java:124)
+	at menu.Menu.doOperation(Menu.java:68)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:13)
+02-07 18:51:21 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+UPDATE USER SET first_name='jjohn', last_name='doe' WHERE id=1 [90002-148]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:327)
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.message.DbException.get(DbException.java:133)
+	at org.h2.command.Prepared.query(Prepared.java:211)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:78)
+	at org.h2.command.Command.executeQuery(Command.java:131)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:77)
+	at database.Database.editUser(Database.java:119)
+	at menu.Menu.updateUser(Menu.java:124)
+	at menu.Menu.doOperation(Menu.java:68)
+	at menu.Menu.runMainMenu(Menu.java:25)
+	at application.ApplicataionMain.main(ApplicataionMain.java:13)

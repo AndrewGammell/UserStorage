@@ -1,0 +1,85 @@
+package menu;
+
+import java.util.Scanner;
+
+import database.Database;
+
+public class Menu {
+	private Scanner scanner = new Scanner(System.in);
+	private boolean exit = false;
+
+
+	public void runMainMenu (){
+		Database db = new Database();
+		db.createTable();
+
+		do {
+			String input;
+
+			showMenu();
+
+			input = scanner.next();
+
+			if(validateSelection(input)) {
+				doOperation(input);
+			} else {
+				showInvalidSelectionMessage();
+			}
+
+		}while(!exit);
+	}
+
+	private void showMenu() {
+
+		System.out.println("\n\nPlease Select The Operation You Wish To Carry Out.\n"
+				+ "1: Add New User\n"
+				+ "2: Edit Existing User\n"
+				+ "3: Delete User\n"
+				+ "4: List All Users\n"
+				+ "5: Count Users\n"
+				+ "E: Exit Application");
+	}
+
+	private boolean validateSelection(String input) {
+
+		if(input.toUpperCase().equals("E")) {
+			return true;
+		} else {
+			try {
+
+				int intInput = Integer.parseInt(input);
+
+				if(intInput > 0 && intInput < 6) {
+					return true;
+				} else {
+					return false;
+				}
+			}catch (NumberFormatException nfe) {
+				return false;
+			} 
+		}
+	}
+
+	private void doOperation(String input) {
+		switch(input.toUpperCase()) {
+		case "1":  System.out.println("Adding User");
+			break;
+		case "2":  System.out.println("Editing User");
+			break;
+		case "3":  System.out.println("Deleting User");
+			break;
+		case "4":  System.out.println("Listing Users");
+			break;
+		case "5":  System.out.println("Count Users");
+			break;
+		case "E":  exit = true;
+			break;
+		default: ;
+		}
+	}
+
+	private void showInvalidSelectionMessage() {
+		System.out.println("You Made An Invalid Selection Please From The Menu");
+	}
+
+}

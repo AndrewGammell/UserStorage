@@ -1,0 +1,68 @@
+package menu;
+
+import java.util.Scanner;
+
+public class Menu {
+	Scanner scanner = new Scanner(System.in);
+
+
+	public void runMainMenu (){
+		boolean exit = false;
+
+		do {
+			String input;
+
+			showMenu();
+
+			input = scanner.next();
+
+			if(validateSelection(input)) {
+				doSomething();
+			} else {
+				showInvalidSelectionMessage();
+			}
+
+		}while(exit);
+	}
+
+	private void showMenu() {
+
+		System.out.println("Welcome To The User Storage Application "
+				+ "\n Please Select The Operation You Wish To Carry Out \n\n");
+
+		System.out.println("1: Add New User\n"
+				+ "2: Edit Existing User\n"
+				+ "3: Delete User\n"
+				+ "4: List All Users\n"
+				+ "E: Exit Application");
+	}
+
+	private boolean validateSelection(String input) {
+
+		if(input.toUpperCase().equals("E")) {
+			return true;
+		} else {
+			try {
+
+				int intInput = Integer.parseInt(input);
+
+				if(intInput > 0 && intInput < 5) {
+					return true;
+				} else {
+					return false;
+				}
+			}catch (NumberFormatException nfe) {
+				return false;
+			} 
+		}
+	}
+	
+	private void doSomething() {
+		System.out.println("doing Something");
+	}
+
+	private void showInvalidSelectionMessage() {
+		System.out.println("You Made An Invalid Selection Please From The Menu");
+	}
+	
+}

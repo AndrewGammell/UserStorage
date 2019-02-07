@@ -1,0 +1,20 @@
+package menu;
+
+import java.util.Scanner;
+
+public class Menu {
+	Scanner scanner = new Scanner(System.in);
+	
+	
+	void runMainMenu (){
+		boolean exit = false;
+		
+		do {
+			Scanner input = scanner;
+			
+			
+		
+			
+		}while(exit);
+	}
+}

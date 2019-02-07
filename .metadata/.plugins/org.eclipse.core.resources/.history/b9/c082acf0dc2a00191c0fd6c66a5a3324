@@ -1,0 +1,76 @@
+package menu;
+
+import java.util.Scanner;
+
+public class Menu {
+	Scanner scanner = new Scanner(System.in);
+	private boolean exit = false;
+
+
+	public void runMainMenu (){
+
+		do {
+			String input;
+
+			showMenu();
+
+			input = scanner.next();
+
+			if(validateSelection(input)) {
+				doSomething(input);
+			} else {
+				showInvalidSelectionMessage();
+			}
+
+		}while(!exit);
+	}
+
+	private void showMenu() {
+
+		System.out.println("\n\nPlease Select The Operation You Wish To Carry Out.\n"
+				+ "1: Add New User\n"
+				+ "2: Edit Existing User\n"
+				+ "3: Delete User\n"
+				+ "4: List All Users\n"
+				+ "E: Exit Application");
+	}
+
+	private boolean validateSelection(String input) {
+
+		if(input.toUpperCase().equals("E")) {
+			return true;
+		} else {
+			try {
+
+				int intInput = Integer.parseInt(input);
+
+				if(intInput > 0 && intInput < 5) {
+					return true;
+				} else {
+					return false;
+				}
+			}catch (NumberFormatException nfe) {
+				return false;
+			} 
+		}
+	}
+
+	private void doSomething(String input) {
+		switch(input.toUpperCase()) {
+		case "1": 		System.out.println("Adding user");
+			break;
+		case "3":  System.out.println("Editing user");
+			break;
+		case "4":  System.out.println("Delete User");
+			break;
+		case "E":  exit = true;
+			break;
+		default: ;
+		}
+	}
+
+	private void showInvalidSelectionMessage() {
+		System.out.println("You Made An Invalid Selection Please From The Menu");
+	}
+
+}
